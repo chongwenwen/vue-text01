@@ -24,7 +24,7 @@ module.exports={  //module.组件.模块
                 loader: "style-loader!css-loader!less-loader"
             },
             {
-                test:/\.(png|jpg|gif|ttf)$/,//打包sass文件
+                test:/\.(png|jpg|gif|ttf|svg)$/,//打包sass文件
                 loader: "url-loader?limit=20000"  //小于40k的就打包到build.js中.大于40k的就放到磁盘上,图片地址还是保存在build.js中
             },
              //webpack2.0和3.0不需要了

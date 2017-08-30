@@ -1,9 +1,6 @@
 <template>
     <div id="routerView">
-       <div class="mui-bar mui-bar-nav">
-            <router-link class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" to="/news/newlist" style="font-size: 16px"></router-link>
-            <h1 class="mui-title">资讯详情</h1>
-        </div>
+       
        <div class="tile">
            <h3>{{infolist.title}}</h3>
            <span>{{infolist.add_time | dataFmt("YY-MM-DD hh:mm:ss")}} 1次浏览 分类:经济民生</span>
@@ -73,15 +70,5 @@ import comment from "../../subcom/comment.vue";
    .mui-title {
         color: #007aff;
         font-size: 20px;
-   }
-   .mui-bar .mui-bar-nav {
-        border-bottom: 1px solid #ccc;
-    }
-    .mui-icon-back:before, .mui-icon-left-nav:before {
-        content: "返回";
-        height: 44px;
-   }
-   .mui-bar .mui-icon {
-      padding-top: 15px;
    }
 </style>

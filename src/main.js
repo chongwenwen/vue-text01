@@ -22,6 +22,10 @@ Vue.filter("dataFmt",function(input,fmtString){
     return moment(input).format(fmtString);  
 })
 
+//引入vue-preview插件
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
+
 //抽取公共样式
 Vue.prototype.$urlPrefix = "http://139.199.192.48:8888";
 // http://139.199.192.48:8888/api/postcomment/43
@@ -33,9 +37,12 @@ import cart from "./components/Cart.vue";
 import search from "./components/Search.vue";
 import news from "./components/news/newlist.vue";
 import newsinfo from "./components/news/newsinfo.vue";
-import photo from "./components/photo/photolist.vue";
+import photolist from "./components/photo/photolist.vue";
 import photoinfo from "./components/photo/photoinfo.vue";
-import goods from "./components/goods/goodslist.vue";
+import goodslist from "./components/goods/goodslist.vue";
+import goodsinfo from "./components/goods/goodsinfo.vue";
+import goodsbuy from "./components/goods/goodsbuy.vue";
+import goodscomment from "./components/goods/goodscomment.vue";
 
 
 
@@ -84,11 +91,11 @@ var router = new VueRouter({
        },
        {
             path: "/photo/photolist",
-            component:photo
+            component:photolist
        },
        {
             path: "/goods/goodslist",
-            component:goods
+            component:goodslist
        },
        {
             path: "/news/newsinfo/:id",
@@ -97,6 +104,18 @@ var router = new VueRouter({
        {
             path:"/photo/photoinfo/:id",
             component:photoinfo
+       },
+       {
+            path:"/goods/goodsinfo/:id",
+            component:goodsinfo
+       },
+       {
+            path:"/goods/goodsbuy/:id",
+            component:goodsbuy
+       },
+       {
+            path:"/goods/goodscomment/:id",
+            component:goodscomment
        }
     ]
 });
@@ -107,6 +126,15 @@ new Vue({
     el:"#app",
     router: router,
     //接收传过来的App对象
-    // render:function(creat){creat(App)}; //es5的写法
-    render: creat=>creat(App)//es6的写法,goes to语法 箭头函数 =>左边是参数 右边是函数方法体
+     // render:function(creat){//es5的写法
+
+     //     return creat(App);
+
+     // }; 
+    render: creat=>creat(App),//es6的写法,goes to语法 箭头函数 =>左边是参数 右边是函数方法体
+    created(){
+       window.eventBus = this; 
+       //把new的vue的对象存储在window中,方便全局操作
+    }
+
 });

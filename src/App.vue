@@ -1,8 +1,11 @@
 <!--以后这里放项目的根组件-->
 <template>
    <div>
-       <mt-header fixed title="传智.黑马vuejs内容管理系统"></mt-header>
-       
+       <div class="backbtn" v-if="isshow">
+          <a href="javascript:;" @click="backTo">返回</a>
+       </div>
+       <mt-header fixed title="传智.黑马vuejs内容管理系统" class="head"></mt-header>
+                   
        <router-view></router-view>
        
        <nav class="mui-bar mui-bar-tab">
@@ -15,7 +18,10 @@
             <span class="mui-tab-label">会员</span>
           </router-link>
           <router-link class="mui-tab-item" to="/cart">
-            <span class="mui-icon mui-icon-contact"><span class="mui-badge">0</span></span>
+            <span class="mui-icon mui-icon-contact">
+               <!-- 徽章 -->
+               <span class="mui-badge" v-text="totalCount"></span>
+            </span>
             <span class="mui-tab-label">购物车</span>
           </router-link>
           <router-link class="mui-tab-item" to="/search">
@@ -27,11 +33,60 @@
 </template>
 
 <script>
-   
+   import {getTotalCount} from "./kit/localStorageTool.js";
    export default{   
-       
+       data(){
+           return{
+              totalCount:0,  //设徽章的初始值为0
+              isshow:false
+           }
+       },
+       created(){
+          
+           this.totalCount = getTotalCount();
+
+           //监听购物车的事件
+           //window.eventBus = vm的全局对象.谁监听了这个事件 ,就可以获取这个事件对应的数据
+           window.eventBus.$on("carUpNumber",function(){
+                var muiBadge = document.querySelector(".mui-badge");
+                muiBadge.innerText = getTotalCount() + "";
+               
+           })
+       },
+       watch:{
+          "$route":function(newroute,oldroute){
+               console.log(newroute,oldroute);
+               //newroute - {path: "/goods/goodslist"}, 
+               //oldroute - {path: "/home"}
+               if(newroute.path.toLowerCase()=="/home"){
+                  this.isshow=false;
+               }else{
+                  this.isshow=true;
+               }
+          }
+       },
+       methods:{
+        //设置返回
+          backTo(){
+
+             this.$router.go(-1)
+          }
+       }
    };
 </script>
 <style scoped>
-  
+
+   .backbtn {
+       width: 50px;
+       height: 30px;
+       position: fixed;
+       top: 10px;
+       left: 10px;
+       z-index: 1000;
+   }
+   .backbtn>a {
+      color: #fff;
+      font-size: 16px;
+      
+   }
 </style>

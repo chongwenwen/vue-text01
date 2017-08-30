@@ -1,9 +1,6 @@
 <template>
    <div id="routerView">
-        <div class="mui-bar mui-bar-nav">
-            <router-link class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" to="/home" style="font-size: 16px"></router-link>
-            <h1 class="mui-title">图文资讯</h1>
-        </div>
+      
         <div class="mui-content">
             <ul class="mui-table-view">
                 <li class="mui-table-view-cell mui-media" v-for="item in newlist">
@@ -50,15 +47,8 @@
    };
 </script>
 
-<style scoped>
-    .mui-title {
-        color: #007aff;
-        font-size: 20px;
-    }
-    .mui-bar .mui-icon {
-         padding-top: 15px;
-         font-size: 18px;
-    }
+<style scoped>    
+  
     .mui-media-body {
         height: 60px;
     }
@@ -85,12 +75,5 @@
         max-width: 60px;
         line-height: 60px;
     }
-    .mui-bar .mui-bar-nav {
-        margin-top: 40px;
-        border-bottom: 1px solid #ccc;
-    }
-    .mui-icon-back:before, .mui-icon-left-nav:before {
-        content: "返回";
-        height: 44px;
-    }
+    
 </style>

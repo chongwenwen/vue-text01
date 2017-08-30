@@ -1,5 +1,6 @@
 <template>
    <div id="routerView">
+      
        <div class="photo-nav">
            <ul v-bind="{style:'width:'+ulWidth+'px'}">
                <li @click="getimgs(0)">全部</li>

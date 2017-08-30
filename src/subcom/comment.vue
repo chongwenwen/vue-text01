@@ -15,7 +15,7 @@
            </div>
            <div class="list" v-for="(item,index) in comlist">
                <div class="listName">
-                   <span>{{index}}楼</span>
+                   <span>{{index+1}}楼</span>
                    <span>{{item.user_name}}</span>
                    <span>{{item.add_time | dataFmt("YYYY-MM-DD HH:mm:ss")}}</span>
                </div>
@@ -66,6 +66,7 @@
                                         "user_name": "匿名用户",
                                         "add_time": new Date(),
                                         "content": this.cominfo
+                                    
                                     }].concat(this.comlist);
 
                      this.cominfo = "";
@@ -141,6 +142,7 @@
     }
     .comlist>.list>.listName {
         margin-top: 10px;
+        background-color: #eee;
     }
     .comlist>.list>.listName>span {
         font-size: 14px;

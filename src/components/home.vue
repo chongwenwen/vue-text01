@@ -2,9 +2,7 @@
 <template>
    <div id="routerView">
    <!-- 轮播图 -->
-      <mt-swipe :auto="4000">
-          <mt-swipe-item v-for="item in slideList"><img v-bind:src="item.img"></mt-swipe-item>
-      </mt-swipe>
+       <slider :imgs="slideList"></slider>
    <!-- 九宫格 -->
       <div class="mui-content">
          <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -50,7 +48,7 @@
 </template>
 
 <script>
-   
+   import slider from  "../subcom/slider.vue";
    import { Toast } from 'mint-ui';
 
    export default{   
@@ -59,6 +57,9 @@
              msge: "",
              slideList:[]
           }
+       },
+       components:{
+           slider
        },
        methods:{
         //轮播图数据
@@ -84,14 +85,6 @@
    };
 </script>
 <style scoped>
-    .mint-swipe {
-        height: 300px;
-        width: 100%;
-    }
-    .mint-swipe-item>img {
-         width: 100%;
-         height: 100%;
-    }
     .mui-icon-home:before,
     .mui-icon-email:before,
     .mui-icon-chatbubble:before,
