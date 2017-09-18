@@ -123,18 +123,13 @@ var router = new VueRouter({
 
 //利用vue对象进行解析渲染
 new Vue({
-    el:"#app",
+    el:"#app",//关联index1.html
     router: router,
-    //接收传过来的App对象
-     // render:function(creat){//es5的写法
-
-     //     return creat(App);
-
-     // }; 
-    render: creat=>creat(App),//es6的写法,goes to语法 箭头函数 =>左边是参数 右边是函数方法体
+    //接收传过来的App对象 关联App.vue
+    render: creat=>creat(App), 
+    //es6的写法,goes to语法 箭头函数 =>左边是参数 右边是函数方法体    
     created(){
        window.eventBus = this; 
        //把new的vue的对象存储在window中,方便全局操作
     }
-
 });

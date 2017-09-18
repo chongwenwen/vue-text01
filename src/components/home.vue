@@ -1,4 +1,4 @@
-<!--以后这里放项目的根组件-->
+
 <template>
    <div id="routerView">
    <!-- 轮播图 -->
@@ -68,14 +68,14 @@
             
             this.$http.get(url).then(function(response){
 
-                 console.log(response.body.message);
+//               console.log(response.body.message);
                  if(response.body.status != 0){
-
+                    
                     Toast(response.body.message);//弹出信息
                     return;
                  }
-                
-                  this.slideList =  response.body.message;
+                console.log(response.body.message);
+                this.slideList= response.body.message
             })
           }
        },
@@ -104,10 +104,10 @@
         background-image: url("../../statics/images/2.png");
     }
     .mui-icon-chatbubble:before {
-        background-image: url("../../statics/images/3.png");
+        background-image: url("../../statics/images/4.png");
     }
     .mui-icon-location:before {
-        background-image: url("../../statics/images/4.png");
+        background-image: url("../../statics/images/3.png");
     }
     .mui-icon-search:before {
         background-image: url("../../statics/images/5.png");

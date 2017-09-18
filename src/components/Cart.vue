@@ -13,7 +13,8 @@
                             <inputNumber class="ipt" v-on:dataObj="getNewCount" v-bind:goosId="item.id" v-bind:initCount="item.count">                                
                             </inputNumber>
                         </li>
-                        <li><a href="#">删除</a></li>
+                        <li><a href="javascript:;">删除</a></li>
+                        <!-- @click="deletList(key,item.id)" -->
                     </ul>
                 
                 </div>
@@ -29,14 +30,13 @@
 
 <script>
 import inputNumber from "../subcom/inputNumber.vue";
-import {getAll,updateTo} from "../kit/localStorageTool.js"
+import {getAll,updateTo,deleteItem} from "../kit/localStorageTool.js"
     export default{
         components:{
             inputNumber
         },
         data(){
-            return {
-        
+            return {      
                 datalist:[],
                 count:0,
                 amount:0
@@ -62,13 +62,13 @@ import {getAll,updateTo} from "../kit/localStorageTool.js"
                 var newNumber = parseInt(input.split(":")[1]);
                 updateTo(gId,newNumber);
 
-                this.datalist[gId].count = newNumber; //把内存的数据更新
+                this.datalist[gId].count = newNumber; //把从内存获取的数据更新
 
                 //点击加减更新总数和总价格
                 this.calc();
             
 
-                //哪里发送这个事件,调用这个事件的就会自动执行,不需要传值
+                //哪里发送这个事件,调用这个事件的就会自动执行,不需要传值,作用是发了一个通知,通知我改变了
                  window.eventBus.$emit("carUpNumber","");
             },
             //获取购物车数量个总价
@@ -94,6 +94,23 @@ import {getAll,updateTo} from "../kit/localStorageTool.js"
                 this.count = totalCount;
                 this.amount = totalMoney;
             }
+            // //删除当前行
+            // deletList(key,id){
+            //     console.log(id);
+            //     // 删除datalist就自然不会遍历少一项
+            //     // 移除内存的这一项对应的所有值
+            //     // index对应的这一项移除
+            //     var list = this.datalist;
+            //      list.splice(key,1);                  
+
+            //     deleteItem(id);           
+            //     // for(var key in this.datalist){
+            //     //   var item = this.datalist[key]; 
+            //     //    if(key == id){                      
+            //     //    }
+            //     // }
+                
+            // }
         }
     }
 </script>

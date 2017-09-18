@@ -107,7 +107,6 @@
                var targetY = localStorage.getItem("badegTop")-(getTop(el)-window.scrollY);
                el.style.transform = "translate("+targetX+"px,"+targetY+"px)";
                done();
-
            },
            afterEnter(el){
                this.show = false;

@@ -4,7 +4,7 @@
        <div class="backbtn" v-if="isshow">
           <a href="javascript:;" @click="backTo">返回</a>
        </div>
-       <mt-header fixed title="传智.黑马vuejs内容管理系统" class="head"></mt-header>
+       <mt-header fixed title="前端商城" class="head"></mt-header>
                    
        <router-view></router-view>
        
@@ -54,11 +54,13 @@
            })
        },
        watch:{
+          //设置返回显示,如果是首页不显示
           "$route":function(newroute,oldroute){
                console.log(newroute,oldroute);
-               //newroute - {path: "/goods/goodslist"}, 
-               //oldroute - {path: "/home"}
-               if(newroute.path.toLowerCase()=="/home"){
+               //newroute - {path: "/home"}, 
+               //oldroute - {path: "/goods/goodslist"}
+               if(newroute.path.toLowerCase()=="/home"){ 
+               	//toLowerCase()将字符串中的字母被转换为小写字母
                   this.isshow=false;
                }else{
                   this.isshow=true;
@@ -68,8 +70,8 @@
        methods:{
         //设置返回
           backTo(){
-
-             this.$router.go(-1)
+            
+             this.$router.go(-1) //始终返回之前的页面
           }
        }
    };

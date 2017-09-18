@@ -54,6 +54,7 @@
                }
                
                var url = this.$urlPrefix+"/api/postcomment/"+this.id;
+            
                
                this.$http.post(url,{content:this.cominfo},{emulateJSON:true}).then(function(response){
                      
